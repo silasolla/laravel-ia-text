@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/texts/index', [TextController::class, 'index'])->name('texts.index');
 Route::get('/texts/create', [TextController::class, 'create'])->name('texts.create');
+Route::post('/texts/store', [TextController::class, 'store'])->name('texts.store');

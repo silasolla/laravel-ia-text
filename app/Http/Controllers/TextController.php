@@ -12,9 +12,11 @@ class TextController extends Controller
 		// dd($texts); // dump + die
 		return view('texts.index', compact('texts'));
 	}
+
 	public function create(){
 		return view('texts.create');
 	}
+
     public function store(Request $request){
         $validated = $request->validate([
             'title'   => 'required|min:1|max:50',
@@ -36,6 +38,29 @@ class TextController extends Controller
 
         session()->flash('flash_message', '登録しました');
 
+        return redirect()->route('texts.index');
+    }
+
+    public function edit($id){
+		$text = Text::findOrFail($id);
+		// dd($id);
+        return view('texts.edit', compact('text'));
+    }
+
+    public function update(Request $request, $id){
+        $text = Text::findOrFail($id);
+		// dd($id);
+        $text->name  = $request['name'];
+        $text->email = $request['email'];
+
+        $text->save();
+
+        return redirect()->route('texts.index');
+    }
+
+    public function delete($id){
+		$text = Text::findOrFail($id)->delete();
+		// dd($id);
         return redirect()->route('texts.index');
     }
 }

@@ -19,26 +19,33 @@ class TextController extends Controller
 
     public function store(Request $request){
         $validated = $request->validate([
-            'title'   => 'required|min:1|max:50',
-            'content' => 'required|max:1000',
-			'email'   => 'required|email|unique:texts',
-			'price'	  => 'required|integer',
+            'title'      => 'required|min:1|max:50',
+            'content'    => 'required|max:1000',
+			'email'      => 'required|email|unique:texts',
+			'price'	     => 'required|integer',
 			'is_visible' => 'required|boolean'
         ]);
 
         // dd($request);
 
         Text::create([
-            'title'   => $request['title'],
-            'content' => $request['content'],
-			'email'   => $request['email'],
-			'price'   => $request['price'],
+            'title'      => $request['title'],
+            'content'    => $request['content'],
+			'email'      => $request['email'],
+			'price'      => $request['price'],
 			'is_visible' => $request['is_visible']
         ]);
 
         session()->flash('flash_message', '登録しました');
 
         return redirect()->route('texts.index');
+    }
+
+    public function show($id){
+        // dd($id);
+        $text = Text::findOrFail($id);
+        // dd($text);
+        return view('texts.show', compact('text'));
     }
 
     public function edit($id){
@@ -48,10 +55,21 @@ class TextController extends Controller
     }
 
     public function update(Request $request, $id){
+		$validated = $request->validate([
+            'title'      => 'required|min:1|max:50',
+            'content'    => 'required|max:1000',
+			'email'      => 'required|email|unique:texts',
+			'price'	     => 'required|integer',
+			'is_visible' => 'required|boolean'
+        ]);
+
         $text = Text::findOrFail($id);
 		// dd($id);
-        $text->name  = $request['name'];
-        $text->email = $request['email'];
+		$text->title      = $request['title'];
+        $text->content    = $request['content'];
+		$text->email      = $request['email'];
+		$text->price      = $request['price'];
+		$text->is_visible = $request['is_visible'];
 
         $text->save();
 

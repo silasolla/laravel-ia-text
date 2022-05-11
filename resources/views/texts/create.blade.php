@@ -1,3 +1,5 @@
+<a href="{{ route('texts.index') }}">一覧に戻る</a><br>
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

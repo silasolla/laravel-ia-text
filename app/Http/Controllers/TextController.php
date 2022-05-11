@@ -19,8 +19,9 @@ class TextController extends Controller
         $validated = $request->validate([
             'title'   => 'required|min:1|max:50',
             'content' => 'required|max:1000',
-			'email'   => 'required|email|unique:texts'
-			'price'	  => 'required|integer'
+			'email'   => 'required|email|unique:texts',
+			'price'	  => 'required|integer',
+			'is_visible' => 'required|boolean'
         ]);
 
         // dd($request);
@@ -29,7 +30,8 @@ class TextController extends Controller
             'title'   => $request['title'],
             'content' => $request['content'],
 			'email'   => $request['email'],
-			'price'   => $request['price']
+			'price'   => $request['price'],
+			'is_visible' => $request['is_visible']
         ]);
 
         session()->flash('flash_message', '登録しました');

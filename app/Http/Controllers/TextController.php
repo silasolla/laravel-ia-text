@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Text;
 
+use Illuminate\Validation\Rule;
+
 class TextController extends Controller
 {
 	public function index(){
@@ -21,7 +23,9 @@ class TextController extends Controller
         $validated = $request->validate([
             'title'      => 'required|min:1|max:50',
             'content'    => 'required|max:1000',
-			'email'      => 'required|email|unique:texts',
+			// 'email'      => 'required|email|unique:texts',
+			// 'email'      => ['required', 'email', Rule::unique('texts')->ignore($request->id)],
+			'email'      => ['required', 'email', Rule::unique('texts')->ignore($id)],
 			'price'	     => 'required|integer',
 			'is_visible' => 'required|boolean'
         ]);

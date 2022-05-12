@@ -25,10 +25,10 @@
 	<input id="price" type="text" name="price" value="{{ $text->price }}">
 	<br>
 	<label for="is_visible_y">表示</label>
-	<input id="is_visible_y" type="radio" name="is_visible" value="1" checked>
+	<input id="is_visible_y" type="radio" name="is_visible" value="1" {{ $text->is_visible  === 1 ? 'checked' : '' }}>
 	<br>
 	<label for="is_visible_n">非表示</label>
-	<input id="is_visible_n" type="radio" name="is_visible" value="0">
+	<input id="is_visible_n" type="radio" name="is_visible" value="0" {{ $text->is_visible  === 0 ? 'checked' : '' }}>
 	<br>
 	<button>更新する</button>
 </form>  

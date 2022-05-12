@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Text;
-
 use Illuminate\Validation\Rule;
+
+use App\Models\Text;
+use App\Models\User;
 
 class TextController extends Controller
 {
 	public function index(){
+		$userTexts = User::find(1)->texts;
+		// dd($userTexts);
+
 		$texts = Text::all();
 		// dd($texts); // dump + die
 		return view('texts.index', compact('texts'));

@@ -11,6 +11,9 @@ class Text extends Model
 	protected $fillable = [
 		'title', 'content', 'email', 'price', 'is_visible'
     ];
+	public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
 
 

@@ -10,10 +10,8 @@
 	<a href="{{ route('texts.show', [ 'id' => $text->id ]) }}">
 	{{ $text->id  }}
 	</a>
-	: {{ $text->title  }}
-	: {{ $text->content }}
+	: 『{{ $text->title  }}』
 	: {{ $text->email }}
-	: {{ $text->price }}
-	: {{ $text->is_visible }}
+	: {{ $text->price }}円
 	</p>
 @endforeach

@@ -17,7 +17,7 @@ class LectureController extends Controller
         // dd($user, $userId);
 		
 		$user = User::find($authUserId);
-		// dd($user); 
+		dd($user); 
 		dd($user->pivot);
 		foreach ($user->lectures as $lecture){
 			dd($lecture->pivot);

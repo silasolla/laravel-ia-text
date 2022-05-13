@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lecture extends Model
 {
     use HasFactory;
-	public function texts(){
-		return $this->belongsToMany(User::class)->withPivot();
+	public function users(){
+		return $this->belongsToMany(User::class);
 	}
 }

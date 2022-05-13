@@ -45,6 +45,6 @@ class User extends Authenticatable
 		return $this->hasMany(Text::class);
 	}
 	public function lectures(){
-		return $this->belongsToMany(Lecture::class)->withPivot();
+		return $this->belongsToMany(Lecture::class);
 	}
 }

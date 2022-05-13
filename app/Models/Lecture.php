@@ -9,6 +9,6 @@ class Lecture extends Model
 {
     use HasFactory;
 	public function texts(){
-		return $this->belongsToMany(User::class);
+		return $this->belongsToMany(User::class)->withPivot();
 	}
 }

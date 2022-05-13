@@ -44,4 +44,7 @@ class User extends Authenticatable
 	public function texts(){
 		return $this->hasMany(Text::class);
 	}
+	public function lectures(){
+		return $this->belongsToMany(Lecture::class);
+	}
 }

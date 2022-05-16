@@ -6,3 +6,4 @@
 	<li>{{ $lecture->name }}</li>
 @endforeach
 </ul>
+<a href="{{ route('lectures.edit') }}">編集</a>

@@ -25,4 +25,11 @@ class LectureController extends Controller
 		
 		return view('lectures.index', compact('user'));
     }
+	public function edit()
+	{
+		$user     = User::findOrFail(Auth::id());
+		$lectures = Lecture::all();
+		
+		return view('lectures.edit', compact('user', 'lectures'));
+	}
 }

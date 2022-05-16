@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/lectures/', [LectureController::class, 'index'])->name('lectures.index');    
+    Route::get('/lectures/edit', [LectureController::class, 'edit'])->name('lectures.edit');    
 });
 
 require __DIR__.'/auth.php';

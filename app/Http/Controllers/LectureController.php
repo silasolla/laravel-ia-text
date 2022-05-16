@@ -12,18 +12,17 @@ class LectureController extends Controller
 {
     public function index()
 	{
-        $authUser   = Auth::user();
-        $authUserId = Auth::id();
+        // $authUser   = Auth::user();
+        // $authUserId = Auth::id();
         // dd($user, $userId);
 		
-		$user = User::find($authUserId);
-		dd($user); 
-		dd($user->pivot);
-		foreach ($user->lectures as $lecture){
-			dd($lecture->pivot);
-		}
-		$lectureId = Lecture::all();
+		$user = User::findOrFail(Auth::id());
+		// dd($user); 
+		// dd($user->lectures);
+		// foreach ($user->lectures as $lecture){
+		//   dd($lecture->name);
+		// }
 		
-		return view('lectures.index', compact('authUser'));
+		return view('lectures.index', compact('user'));
     }
 }
